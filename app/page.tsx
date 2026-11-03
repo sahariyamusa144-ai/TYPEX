@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type Mode = "time" | "infinite" | "paragraph";
@@ -617,16 +618,34 @@ export default function Home() {
               TYPE<span className="text-violet-500">X</span>
             </div>
 
-            <button
-              onClick={() => setDark((previous) => !previous)}
-              className={`rounded-xl border px-4 py-2 text-sm ${
-                dark
-                  ? "bg-white/5 border-white/10"
-                  : "bg-white border-black/10"
-              }`}
-            >
-              {dark ? "☀ Light" : "☾ Dark"}
-            </button>
+            <nav className="flex items-center gap-2 sm:gap-3">
+              <Link
+                href="/login"
+                className={`rounded-xl border px-3 py-2 text-sm font-semibold transition ${
+                  dark
+                    ? "border-white/10 bg-white/5 hover:bg-white/10"
+                    : "border-black/10 bg-white hover:bg-gray-50"
+                }`}
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="rounded-xl bg-violet-600 px-3 py-2 text-sm font-semibold text-white transition hover:bg-violet-500"
+              >
+                Sign Up
+              </Link>
+              <button
+                onClick={() => setDark((previous) => !previous)}
+                className={`rounded-xl border px-3 py-2 text-sm ${
+                  dark
+                    ? "bg-white/5 border-white/10"
+                    : "bg-white border-black/10"
+                }`}
+              >
+                {dark ? "☀ Light" : "☾ Dark"}
+              </button>
+            </nav>
           </div>
         </header>
 
@@ -1023,6 +1042,20 @@ export default function Home() {
           </button>
 
           <nav className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/login"
+              className={`rounded-xl border px-3 py-2 text-sm font-semibold transition ${panel} hover:border-violet-500/50`}
+            >
+              Login
+            </Link>
+
+            <Link
+              href="/signup"
+              className="rounded-xl bg-violet-600 px-3 py-2 text-sm font-semibold text-white transition hover:bg-violet-500"
+            >
+              Sign Up
+            </Link>
+
             <button
               onClick={() => setShowHistory((previous) => !previous)}
               className={`rounded-xl border px-3 py-2 text-sm ${panel}`}
